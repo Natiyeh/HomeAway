@@ -1,0 +1,6 @@
+<% @homes.each do |home| %>
+  <h2><%= link_to home.name, home_path(home) %></h2>
+  <p><%= home.address %></p>
+<% end %>
+
+<%= link_to 'create', new_home_path %>
