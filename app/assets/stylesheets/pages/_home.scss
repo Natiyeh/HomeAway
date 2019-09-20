@@ -1,1 +1,15 @@
 // Specific CSS for your home-page
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-img-overlay {
+    position: bottom;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 18rem;
+}
