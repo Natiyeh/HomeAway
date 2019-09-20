@@ -1,0 +1,5 @@
+<%= simple_form_for [@home, @booking] do |f| %>
+  <%= f.input :check_in %>
+  <%= f.input :check_out %>
+  <%= f.button :submit, 'Book this home', class: 'btn btn-primary'%>
+<% end %>

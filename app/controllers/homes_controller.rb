@@ -1,10 +1,12 @@
 class HomesController < ApplicationController
+  before_action :set_home, only: %i[show edit update destroy]
+
   def index
     @homes = Home.all
   end
 
   def show
-    @home = Home.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
@@ -19,18 +21,15 @@ class HomesController < ApplicationController
   end
 
   def edit
-    @home = Home.find(params[:id])
   end
 
   def update
-    @home = Home.find(params[:id])
     @home.update(home_params)
 
     redirect_to home_path(@home)
   end
 
   def destroy
-    @home = Home.find(params[:id])
     @home.destroy
 
     redirect_to homes_path
@@ -42,5 +41,9 @@ class HomesController < ApplicationController
     # *Strong params*: You need to *whitelist* what can be updated by the user
     # Never trust user data!
     params.require(:home).permit(:name, :address)
+  end
+
+  def set_home
+    @home = Home.find(params[:id])
   end
 end
