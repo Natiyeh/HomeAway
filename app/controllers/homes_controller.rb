@@ -15,9 +15,13 @@ class HomesController < ApplicationController
 
   def create
     @home = Home.new(home_params)
-    @home.save
-
-    redirect_to home_path(@home)
+    @home.user = current_user
+    if @home.save
+      redirect_to home_path(@home)
+    else
+      @home = Home.new(home_params)
+      redirect_to homes_path
+    end
   end
 
   def edit
