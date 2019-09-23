@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   resources :bookings, only: [:index, :show, :destroy, :update]
 
   resources :listings, only: [:index]
+
+  resources :guests, only: [:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
