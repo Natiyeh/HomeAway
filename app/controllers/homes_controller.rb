@@ -11,6 +11,7 @@ class HomesController < ApplicationController
 
   def new
     @home = Home.new
+    @home.user = current_user
   end
 
   def create
@@ -20,7 +21,7 @@ class HomesController < ApplicationController
       redirect_to home_path(@home)
     else
       @home = Home.new(home_params)
-      redirect_to homes_path
+      redirect_to new_home_path
     end
   end
 
