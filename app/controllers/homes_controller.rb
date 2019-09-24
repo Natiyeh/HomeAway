@@ -43,8 +43,6 @@ class HomesController < ApplicationController
   private
 
   def home_params
-    # *Strong params*: You need to *whitelist* what can be updated by the user
-    # Never trust user data!
     params.require(:home).permit(:name, :address)
   end
 
