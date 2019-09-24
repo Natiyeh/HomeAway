@@ -43,7 +43,7 @@ class HomesController < ApplicationController
   private
 
   def home_params
-    params.require(:home).permit(:name, :address)
+    params.require(:home).permit(:name, :address, :photo)
   end
 
   def set_home

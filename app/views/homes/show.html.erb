@@ -1,5 +1,6 @@
 <h2><%= @home.name %></h2>
 <p><%= @home.address %></p>
+<%= cl_image_tag @home.photo, height: 300, width: 400, crop: :fill %>
 <%= link_to 'index', homes_path %>
 <%= link_to "Delete", home_path(@home),
       method: :delete,
