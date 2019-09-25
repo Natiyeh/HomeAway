@@ -3,14 +3,18 @@ class HomesController < ApplicationController
 
   def index
     @homes = Home.all
+    @homes = Home.geocoded
+
+    @markers = @homes.map do |home|
+      {
+        lat: home.latitude,
+        lng: home.longitude
+      }
+    end
   end
 
   def show
     @booking = Booking.new
-    @markers = [{
-      lat: @home.latitude,
-      lng: @home.longitude
-    }]
   end
 
   def new
