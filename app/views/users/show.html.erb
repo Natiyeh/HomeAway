@@ -1,0 +1,4 @@
+<%= @user.email %>
+<%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
+
+<%= link_to 'Edit', edit_user_path(current_user), class:'btn btn-primary' %>

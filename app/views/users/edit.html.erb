@@ -1,0 +1,5 @@
+<%= simple_form_for @user do |f| %>
+  <%= f.input :email %>
+  <%= f.input :photo %>
+  <%= f.button :submit, "Submit Changes", class:'btn btn-primary form-actions mx-auto', style:'width:200px;' %>
+<% end %>
