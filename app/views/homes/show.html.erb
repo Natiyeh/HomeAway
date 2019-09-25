@@ -7,4 +7,10 @@
       data: { confirm: "Are you sure?" } %>
 <% if @home.user != current_user %>
   <%= render '/shared/booking_form' %>
+  <%= link_to 'leave a review', new_home_review_path(@home) %>
+<% end %>
+
+<% @home.reviews.each do |review|  %>
+<%= review.content %>
+<%= review.rating %>
 <% end %>
