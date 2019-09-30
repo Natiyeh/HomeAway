@@ -1,11 +1,16 @@
-
-
-
-
-      <%= simple_form_for [@home] do |f| %>
-        <%= f.input :name, maxlength: 20, placeholder: 'Beautiful Downtown Location', opacity: 3%>
-        <%= f.input :address, placeholder: '20 W 34th St, New York, NY 10001, USA'%>
-        <%= f.input :photo %>
-        <%= f.input :photo_cache, as: :hidden %>
-        <%= f.button :submit, 'List this house', class: 'btn btn-primary'%>
-      <% end %>
+<div>
+  <%= simple_form_for [@home] do |f| %>
+    <%= f.input :type, :collection => ["Entire Apartment", "Private Room In Apartment", "Entire House", "Private Room In House"] %>
+    <%= f.input :name, maxlength: 30, placeholder: 'Beautiful Downtown Location', opacity: 3%>
+    <%= f.input :address, placeholder: '20 W 34th St, New York, NY 10001, USA'%>
+    <%= f.input :guest, :collection => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+    <%= f.input :bedroom, :collection => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+    <%= f.input :bed, :collection => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+    <%= f.input :bath, :collection => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+    <%= f.input :rate, placeholder: '$25' %>
+    <%= f.input :description, placeholder: 'A gorgeous location right in the heart of downtown New York with two....' %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.button :submit, 'List this house', class: 'btn btn-primary'%>
+  <% end %>
+</div>
