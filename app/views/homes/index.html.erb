@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-around">
-  <div class="shadow p-4 mb-5 bg-white rounded overflow-auto" style="width: 600px; height: 630px;">
+  <div class="shadow p-4 mb-5 bg-white rounded overflow-auto" style="width: 620px; height: 530px;">
     <% @homes.each do |home| %>
     <%= link_to home_path(home) do %>
     <div class="card mb-3 p-2 shadow-sm" style="max-width: 600px;">
@@ -23,8 +23,8 @@
     <div
       class="rounded"
       id="map"
-      style="width: 600px;
-      height: 600px;"
+      style="width: 620px;
+      height: 500px;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
