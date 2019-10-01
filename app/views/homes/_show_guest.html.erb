@@ -5,21 +5,20 @@
       <h2><%= @home.name %></h2>
       <p><%= @home.address %></p>
       <p><%= @home.bedroom %> Bedrooms</p>
-      <p><i class="fas fa-user"></i> <%= @home.guest %></p>
-      <p><i class="fas fa-bed"></i> <%= @home.bed %></p>
-      <p><i class="fas fa-toilet"></i> <%= @home.bath %></p>
+      <p><i class="fas fa-user"></i> <%= @home.guest %> - <i class="fas fa-bed"></i> <%= @home.bed %> - <i class="fas fa-toilet"></i> <%= @home.bath %></p>
+      <br>
+      <br>
       <div
       class="rounded shadow"
       id="map"
-      style="width: 180px;
-      height: 160px;"
+      style="width: 220px;
+      height: 200px;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
     </div>
     <div class="col">
-      <%= cl_image_tag(@home.user.photo, alt: "avatar", class: "card-user avatar-bordered") %>
-      <h5><%= @home.user.email %></h5>
+      <%= cl_image_tag(@home.user.photo, alt: "avatar", class: "card-user avatar-bordered") %> <%= @home.user.email %>
       <%= cl_image_tag @home.photo, class: "img-thumbnail", style: "width: 530px; height: 400px;" %>
       </div>
     <div class="w-100"></div>
