@@ -1,17 +1,5 @@
-<h2><%= @home.name %></h2>
-<p><%= @home.address %></p>
-<%= cl_image_tag @home.photo, height: 300, width: 400, crop: :fill %>
-<%= link_to 'index', homes_path %>
-<%= link_to "Delete", home_path(@home),
-      method: :delete,
-      data: { confirm: "Are you sure?" } %>
-<% if @home.user != current_user %>
-  <%= render '/shared/booking_form' %>
-  <%= link_to 'leave a review', new_home_review_path(@home) %>
+<% if current_user == nil || current_user.id != @home.user_id%>
+  <%= render 'show_guest' %>
+<% else %>
+  <%= render 'show_host' %>
 <% end %>
-
-<% @home.reviews.each do |review|  %>
-  <%= review.content %>
-  <%= review.rating %>
-<% end %>
-
