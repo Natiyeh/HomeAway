@@ -6,7 +6,10 @@
   border-radius: 50%;
 }
 .avatar-large {
-  width: 56px;
+  width: 150px;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
   border-radius: 50%;
 }
 .avatar-bordered {

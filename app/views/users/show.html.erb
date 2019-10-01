@@ -1,4 +1,6 @@
-<%= @user.email %>
-<%= cl_image_tag @user.photo, height: 300, width: 400, crop: :fill %>
 
-<%= link_to 'Edit', edit_user_path(current_user), class:'btn btn-primary' %>
+<% if current_user == nil || current_user.id != @user.id %>
+  <%= render 'show_guest' %>
+<% else %>
+  <%= render 'show_host' %>
+<% end %>

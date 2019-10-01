@@ -1,6 +1,6 @@
 <div class="container p-4">
   <div class="row">
-    <div class="col">
+    <div class="col border-bottom">
       <h3 class="text-muted"><%= @home.home_type %></h3>
       <h2><%= @home.name %></h2>
       <p><%= @home.address %></p>
@@ -18,13 +18,15 @@
     ></div>
     </div>
     <div class="col">
-      <%= cl_image_tag(@home.user.photo, alt: "avatar", class: "card-user avatar") %> <%= @home.user.first_name %>
-      <%= cl_image_tag @home.photo, class: "img-thumbnail", style: "width: 530px; height: 400px;" %>
-      </div>
+      <%= link_to user_path(@home.user.id) do %>
+        <%= cl_image_tag(@home.user.photo, alt: "avatar", class: "card-user avatar") %> <%= @home.user.first_name.capitalize %>
+        <%= cl_image_tag @home.photo, class: "img-thumbnail", style: "width: 530px; height: 400px;" %>
+      <% end %>
+    </div>
     <div class="w-100"></div>
     <div class="col">
       <br>
-      <p><%= @home.description %></p>
+      <p class="border-bottom"><%= @home.description %></p>
       <br>
       <h5>Reviews <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></h5>
         <% @home.reviews.each do |review| %>

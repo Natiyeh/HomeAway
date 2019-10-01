@@ -1,0 +1,52 @@
+<!-- profile card -->
+<div class="container">
+  <div class="profile-container">
+    <div class='profile-card card-padding'>
+      <div class="profile-picture">
+        <%= cl_image_tag current_user.photo, class: 'avatar-large' %>
+      </div>
+      <div class='border-bottom card-padding'>
+        <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>
+      </div>
+      <div class='border-bottom card-padding'>
+        <div>Joined in <b><%= @user.created_at.to_s.match(/^\d+/) %></b>
+        </div>
+      </div>
+      <div class='border-bottom card-padding'>
+        <div>
+          <% @user.homes.each do |home| %>
+            <i class="far fa-comment-alt"></i> <%= home.reviews.all.count %> reviews
+          <% end %>
+        </div>
+      </div>
+      <div class="card-padding">
+        <%= link_to 'Edit Name', edit_user_path(current_user), class:'btn btn-primary' %>
+      </div>
+      <div class="card-padding">
+        <%= link_to 'Change Password', edit_user_registration_path(current_user), class:'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+  <div class="about-me-container">
+    <div class="header">
+      <h1>Hi, I'm <%= @user.first_name.capitalize %></h1>
+    </div>
+    <div>
+      <h4>listings</h4>
+    </div>
+    <div class="overflow-auto">
+    <div class="card-deck listings">
+      <% @user.homes.each do |home| %>
+        <div class="card card-padding" style="width: 18rem;">
+          <%= link_to home_path(home) do  %>
+          <%= cl_image_tag home.photo, class: 'card-img-top rounded' %>
+          <% end %>
+          <div class="card-body">
+            <p class="card-text"><%= home.name %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    </div>
+  </div>
+</div>
