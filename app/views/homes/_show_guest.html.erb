@@ -17,7 +17,11 @@
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
     </div>
-    <div class="col"><%= cl_image_tag @home.photo, class: "img-thumbnail", style: "width: 530px; height: 400px;" %></div>
+    <div class="col">
+      <%= cl_image_tag(@home.user.photo, alt: "avatar", class: "card-user avatar-bordered") %>
+      <h5><%= @home.user.email %></h5>
+      <%= cl_image_tag @home.photo, class: "img-thumbnail", style: "width: 530px; height: 400px;" %>
+      </div>
     <div class="w-100"></div>
     <div class="col">
       <br>
