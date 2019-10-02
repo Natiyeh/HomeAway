@@ -28,25 +28,56 @@
     </div>
   </div>
   <div class="about-me-container">
-    <div class="header">
-      <h1>Hi, I'm <%= @user.first_name.capitalize %></h1>
-    </div>
     <div>
-      <h4>listings</h4>
+      <h4 class="card-padding">Listings</h4>
     </div>
     <div class="overflow-auto">
-    <div class="card-deck listings">
-      <% @user.homes.each do |home| %>
-        <div class="card card-padding" style="width: 18rem;">
-          <%= link_to home_path(home) do  %>
-          <%= cl_image_tag home.photo, class: 'card-img-top rounded' %>
-          <% end %>
-          <div class="card-body">
-            <p class="card-text"><%= home.name %></p>
+      <div class="card-deck listings">
+        <% @user.homes.each do |home| %>
+          <div class="card card-padding" style="width: 18rem;">
+            <%= link_to home_path(home) do  %>
+              <%= cl_image_tag home.photo, class: 'card-img-top rounded' %>
+            <% end %>
+            <div class="card-body">
+              <p class="card-text"><%= home.name %></p>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
+    <div>
+      <h4 class="card-padding">Upcoming Guests</h4>
+    </div>
+    <div class="overflow-auto">
+      <div class="card-deck listings">
+        <% @user.homes.each do |home| %>
+          <div class="card card-padding" style="width: 18rem;">
+            <%= link_to home_path(home) do  %>
+            <%= cl_image_tag home.photo, class: 'card-img-top rounded' %>
+            <% end %>
+            <div class="card-body">
+              <p class="card-text"><%= home.name %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <h4 class="card-padding">Bookings</h4>
+    </div>
+    <div class="overflow-auto">
+      <div class="card-deck listings">
+        <% @user.homes.each do |home| %>
+          <div class="card card-padding" style="width: 18rem;">
+            <%= link_to home_path(home) do  %>
+            <%= cl_image_tag home.photo, class: 'card-img-top rounded' %>
+            <% end %>
+            <div class="card-body">
+              <p class="card-text"><%= home.name %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
