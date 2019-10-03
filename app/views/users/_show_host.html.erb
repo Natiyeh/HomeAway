@@ -1,6 +1,6 @@
 <!-- profile card -->
 <div>
-  <h1 class="border-bottom", style="text-align: center;padding: 30px">My Profile</h1>
+  <h1 class="border-bottom", style="text-align:center; padding:30px; margin-left:400px; margin-right:400px">My Profile</h1>
 <div class="container">
   <div class="profile-container sticky-top">
     <div class='profile-card card-padding'>
@@ -34,7 +34,7 @@
           <i class="fas fa-star"></i> <%= total %>
         </div>
       </div>
-      <div class="card-padding">
+      <div class="card-padding" style="padding-bottom: 0px;">
         <%= link_to 'Edit Name', edit_user_path(current_user), class:'btn btn-primary' %>
       </div>
       <div class="card-padding">
@@ -46,7 +46,7 @@
     <div>
       <h4 class="card-padding">Listings</h4>
     </div>
-    <div class="listings overflow-auto border-bottom" style="width: 700px;height: 300px;">
+    <div class="listings overflow-auto" style="width: 700px;height: 300px;">
       <div class="list-group list-group-horizontal">
         <% @user.homes.each do |home| %>
           <div class="card card-padding" style="max-width: 300px;min-width: 300px;margin: 5px;">
@@ -63,7 +63,7 @@
     <div>
       <h4 class="card-padding">Upcoming Guests</h4>
     </div>
-    <div class="listings overflow-auto border-bottom" style="width: 700px;height: 300px;">
+    <div class="listings overflow-auto" style="width: 700px;height: 300px;">
       <div class="list-group list-group-horizontal">
         <% @upcoming_bookings.each do |booking| %>
           <div class="card card-padding" style="max-width: 300px;min-width: 300px;;margin: 5px;">
@@ -80,7 +80,7 @@
     <div>
       <h4 class="card-padding">Bookings</h4>
     </div>
-    <div class="listings overflow-auto border-bottom" style="width: 700px;height: 300px;">
+    <div class="listings overflow-auto" style="width: 700px;height: 300px;">
       <div class="list-group list-group-horizontal">
         <% @bookings.each do |booking| %>
           <div class="card card-padding" style="max-width: 300px;min-width: 300px;;margin: 5px;">
@@ -102,7 +102,7 @@
         <div class="col overflow-auto listings" style="height: 500px;width: 500px;">
           <% @user.homes.each do|home| %>
             <% home.reviews.each do |review| %>
-              <div class="list-group border-bottom" style="padding-top: 30px;padding-bottom: 30px;">
+              <div class="list-group border-bottom" style="padding-top: 30px;padding-bottom: 10px;">
                 <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1">
                     <%= link_to user_path(review.user.id) do %>
@@ -119,6 +119,15 @@
                 </p>
                 <small>
                   <i class="fas fa-star"></i> <%= review.rating %>
+                </small>
+                <br>
+                <small>
+                  <div class="d-flex w-100 justify-content-around" style="padding-top:0px;">
+                    stayed at: <%= home.name %>
+                    <%= link_to home_path(home) do  %>
+                      <%= cl_image_tag home.photo, class: "square-avatar" %>
+                    <% end %>
+                  </div>
                 </small>
               </div>
             <% end %>
