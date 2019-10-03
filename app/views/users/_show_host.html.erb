@@ -46,10 +46,10 @@
     <div>
       <h4 class="card-padding">Listings</h4>
     </div>
-    <div class="overflow-auto border-bottom" style="width: 700px;height: 300px;">
+    <div class="listings overflow-auto border-bottom" style="width: 700px;height: 300px;">
       <div class="list-group list-group-horizontal">
         <% @user.homes.each do |home| %>
-          <div class="card card-padding" style="max-width: 300px;min-width: 300px;">
+          <div class="card card-padding" style="max-width: 300px;min-width: 300px;margin: 5px;">
             <%= link_to home_path(home) do  %>
               <%= cl_image_tag home.photo, class: 'card-img-top rounded', style: "width: 230px; height: 200px;" %>
             <% end %>
@@ -63,10 +63,10 @@
     <div>
       <h4 class="card-padding">Upcoming Guests</h4>
     </div>
-    <div class="overflow-auto border-bottom" style="width: 700px;height: 300px;">
-      <div class="card-deck listings">
+    <div class="listings overflow-auto border-bottom" style="width: 700px;height: 300px;">
+      <div class="list-group list-group-horizontal">
         <% @upcoming_bookings.each do |booking| %>
-          <div class="card card-padding" style="max-width: 300px;min-width: 300px;">
+          <div class="card card-padding" style="max-width: 300px;min-width: 300px;;margin: 5px;">
             <%= link_to home_path(booking.home) do  %>
             <%= cl_image_tag booking.home.photo, class: 'card-img-top rounded', style: "width: 230px; height: 200px;" %>
             <% end %>
@@ -80,10 +80,10 @@
     <div>
       <h4 class="card-padding">Bookings</h4>
     </div>
-    <div class="overflow-auto border-bottom" style="width: 700px;height: 300px;">
-      <div class="card-deck listings">
+    <div class="listings overflow-auto border-bottom" style="width: 700px;height: 300px;">
+      <div class="list-group list-group-horizontal">
         <% @bookings.each do |booking| %>
-          <div class="card card-padding" style="max-width: 300px;min-width: 300px;">
+          <div class="card card-padding" style="max-width: 300px;min-width: 300px;;margin: 5px;">
             <%= link_to booking_path(booking.id) do  %>
             <%= cl_image_tag booking.home.photo, class: 'card-img-top rounded', style: "width: 230px; height: 200px;"%>
             <% end %>
@@ -94,13 +94,15 @@
         <% end %>
       </div>
     </div>
+    <div class="mx-auto heading" style="width: 200px;">
+      <h3>Reviews</h3>
+    </div>
     <div class="container" style="padding-bottom: 50px;">
       <div class="row">
-        <div class="col overflow-auto" style="height: 500px;width: 500px;">
-          <h2 class="border-bottom border-top" style="padding: 30px;">Reviews</h2>
+        <div class="col overflow-auto listings" style="height: 500px;width: 500px;">
           <% @user.homes.each do|home| %>
             <% home.reviews.each do |review| %>
-              <div class="list-group border-bottom" style="padding-top: 50px;padding-bottom: 30px;">
+              <div class="list-group border-bottom" style="padding-top: 30px;padding-bottom: 30px;">
                 <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1">
                     <%= link_to user_path(review.user.id) do %>
