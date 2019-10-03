@@ -26,12 +26,13 @@
         </div>
         <div>
           <% total = 0 %>
+          <% sum = 0 %>
           <% @user.homes.each do|home| %>
             <% home.reviews.each do |review| %>
               <% total += review.rating %>
             <% end %>
           <% end %>
-          <i class="fas fa-star"></i> <%= total %>
+          <i class="fas fa-star"></i> <%= total/review_count.to_f %>
         </div>
       </div>
       <div class="card-padding" style="padding-bottom: 0px;">
