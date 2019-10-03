@@ -1,6 +1,8 @@
 <!-- profile card -->
+<div>
+  <h1 class="border-bottom", style="text-align: center;padding: 30px">My Profile</h1>
 <div class="container">
-  <div class="profile-container">
+  <div class="profile-container sticky-top">
     <div class='profile-card card-padding'>
       <div class="profile-picture">
         <%= cl_image_tag current_user.photo, class: 'avatar-large' %>
@@ -44,7 +46,7 @@
     <div>
       <h4 class="card-padding">Listings</h4>
     </div>
-    <div class="overflow-auto" style="width: 700px;height: 300px;">
+    <div class="overflow-auto border-bottom" style="width: 700px;height: 300px;">
       <div class="list-group list-group-horizontal">
         <% @user.homes.each do |home| %>
           <div class="card card-padding" style="max-width: 300px;min-width: 300px;">
@@ -61,7 +63,7 @@
     <div>
       <h4 class="card-padding">Upcoming Guests</h4>
     </div>
-    <div class="overflow-auto" style="width: 700px;height: 300px;">
+    <div class="overflow-auto border-bottom" style="width: 700px;height: 300px;">
       <div class="card-deck listings">
         <% @upcoming_bookings.each do |booking| %>
           <div class="card card-padding" style="max-width: 300px;min-width: 300px;">
@@ -78,7 +80,7 @@
     <div>
       <h4 class="card-padding">Bookings</h4>
     </div>
-    <div class="overflow-auto" style="width: 700px;height: 300px;">
+    <div class="overflow-auto border-bottom" style="width: 700px;height: 300px;">
       <div class="card-deck listings">
         <% @bookings.each do |booking| %>
           <div class="card card-padding" style="max-width: 300px;min-width: 300px;">
@@ -92,37 +94,36 @@
         <% end %>
       </div>
     </div>
-  </div>
-</div>
-<div class="container" style="padding-bottom: 50px;">
-  <div class="row">
-    <div class="col" style="width: 500px;">
-      <h2 class="border-bottom border-top">Reviews</h2>
-        <% @user.homes.each do|home| %>
-          <% home.reviews.each do |review| %>
-      <div class="list-group border-bottom" style="padding-top: 50px;padding-bottom: 30px;">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">
-                <%= link_to user_path(review.user.id) do %>
-                  <%= cl_image_tag(review.user.photo, class: "card-user avatar") %>
-                <% end %>
-                <%= review.user.first_name.capitalize %>
-              </h5>
-              <small>
-                <%= review.created_at.to_date.to_s(:long)  %>
-              </small>
-            </div>
-            <p class="mb-1">
-              "<%= review.content %>"
-            </p>
-            <small>
-              <i class="fas fa-star"></i> <%= review.rating %>
-            </small>
-      </div>
+    <div class="container" style="padding-bottom: 50px;">
+      <div class="row">
+        <div class="col overflow-auto" style="height: 500px;width: 500px;">
+          <h2 class="border-bottom border-top" style="padding: 30px;">Reviews</h2>
+          <% @user.homes.each do|home| %>
+            <% home.reviews.each do |review| %>
+              <div class="list-group border-bottom" style="padding-top: 50px;padding-bottom: 30px;">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">
+                    <%= link_to user_path(review.user.id) do %>
+                      <%= cl_image_tag(review.user.photo, class: "card-user avatar") %>
+                    <% end %>
+                    <%= review.user.first_name.capitalize %>
+                  </h5>
+                  <small>
+                    <%= review.created_at.to_date.to_s(:long)  %>
+                  </small>
+                </div>
+                <p class="mb-1">
+                  "<%= review.content %>"
+                </p>
+                <small>
+                  <i class="fas fa-star"></i> <%= review.rating %>
+                </small>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-
+</div>
