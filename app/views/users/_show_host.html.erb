@@ -94,30 +94,35 @@
     </div>
   </div>
 </div>
-<h2>Reviews</h2>
-<ul class="list-group list-group-flush">
-  <% @user.homes.each do|home| %>
-    <% home.reviews.each do |review| %>
-      <li class="list-group-item">
-        <div class="d-flex justify-content-start align-items-center">
-          <%= cl_image_tag(review.user.photo, class: "card-user avatar") %>
-          <%= review.user.first_name %>
-        </div>
-          <div>
-            <p>"<%= review.content %>"</p>
-          </div>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
-
-<ul class="list-group list-group-flush">
-  <li class="list-group-item">Cras justo odio</li>
-  <li class="list-group-item">Dapibus ac facilisis in</li>
-  <li class="list-group-item">Morbi leo risus</li>
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
-</ul>
-
+<div class="container" style="padding-bottom: 50px;">
+  <div class="row">
+    <div class="col" style="width: 500px;">
+      <h2 class="border-bottom border-top">Reviews</h2>
+        <% @user.homes.each do|home| %>
+          <% home.reviews.each do |review| %>
+      <div class="list-group border-bottom" style="padding-top: 50px;padding-bottom: 30px;">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">
+                <%= link_to user_path(review.user.id) do %>
+                  <%= cl_image_tag(review.user.photo, class: "card-user avatar") %>
+                <% end %>
+                <%= review.user.first_name.capitalize %>
+              </h5>
+              <small>
+                <%= review.created_at.to_date.to_s(:long)  %>
+              </small>
+            </div>
+            <p class="mb-1">
+              "<%= review.content %>"
+            </p>
+            <small>
+              <i class="fas fa-star"></i> <%= review.rating %>
+            </small>
+      </div>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>
 
 
