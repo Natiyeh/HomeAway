@@ -49,14 +49,15 @@
     <div class="listings overflow-auto" style="width: 700px;height: 300px;">
       <div class="list-group list-group-horizontal">
         <% @user.homes.each do |home| %>
-          <div class="card card-padding" style="max-width: 300px;min-width: 300px;margin: 5px;">
-            <%= link_to home_path(home) do  %>
-              <%= cl_image_tag home.photo, class: 'card-img-top rounded', style: "width: 230px; height: 200px;" %>
-            <% end %>
-            <div class="card-body">
-              <p class="card-text"><%= home.name %></p>
+          <%= link_to home_path(home) do  %>
+            <div class="card card-padding" style="max-width: 300px;min-width: 300px;margin: 5px;height: 280px;">
+              <%= cl_image_tag home.photo, class: 'card-img-top rounded', style: "width: 250px; height: 150px;" %>
+              <div class="card-body" style="padding: 20px;">
+                <p class="card-text" style="color: black;"><%= home.name %></p>
+                <p style="color: black;"><%= home.address %></p>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     </div>
