@@ -20,8 +20,8 @@
     <div class="col">
       <%= link_to user_path(@home.user.id) do %>
         <%= cl_image_tag(@home.user.photo, alt: "avatar", class: "card-user avatar") %> <%= @home.user.first_name.capitalize %>
-        <%= cl_image_tag @home.photo, class: "img-thumbnail", style: "width: 530px; height: 400px;" %>
       <% end %>
+      <%= cl_image_tag @home.photo, class: "img-thumbnail", style: "width: 530px; height: 400px;" %>
     </div>
     <div class="w-100"></div>
     <div class="col">

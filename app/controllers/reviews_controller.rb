@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @home = Home.find(params[:home_id])
     @review.home = @home
+    @review.user = current_user
     @review.save
     redirect_to home_path(@home)
   end

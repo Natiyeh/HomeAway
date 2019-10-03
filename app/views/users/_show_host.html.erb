@@ -14,9 +14,22 @@
       </div>
       <div class='border-bottom card-padding'>
         <div>
+          <i class="fas fa-comment-alt"></i>
+          <% review_count = 0 %>
           <% @user.homes.each do |home| %>
-            <i class="far fa-comment-alt"></i> <%= home.reviews.all.count %> reviews
+             <% review_count += home.reviews.all.count %>
           <% end %>
+          <%= review_count %>
+          reviews
+        </div>
+        <div>
+          <% total = 0 %>
+          <% @user.homes.each do|home| %>
+            <% home.reviews.each do |review| %>
+              <% total += review.rating %>
+            <% end %>
+          <% end %>
+          <i class="fas fa-star"></i> <%= total %>
         </div>
       </div>
       <div class="card-padding">
@@ -31,12 +44,12 @@
     <div>
       <h4 class="card-padding">Listings</h4>
     </div>
-    <div class="overflow-auto">
-      <div class="card-deck listings">
+    <div class="overflow-auto" style="width: 700px;height: 300px;">
+      <div class="list-group list-group-horizontal">
         <% @user.homes.each do |home| %>
-          <div class="card card-padding" style="width: 18rem;">
+          <div class="card card-padding" style="max-width: 300px;min-width: 300px;">
             <%= link_to home_path(home) do  %>
-              <%= cl_image_tag home.photo, class: 'card-img-top rounded' %>
+              <%= cl_image_tag home.photo, class: 'card-img-top rounded', style: "width: 230px; height: 200px;" %>
             <% end %>
             <div class="card-body">
               <p class="card-text"><%= home.name %></p>
@@ -48,15 +61,15 @@
     <div>
       <h4 class="card-padding">Upcoming Guests</h4>
     </div>
-    <div class="overflow-auto">
+    <div class="overflow-auto" style="width: 700px;height: 300px;">
       <div class="card-deck listings">
-        <% @user.homes.each do |home| %>
-          <div class="card card-padding" style="width: 18rem;">
-            <%= link_to home_path(home) do  %>
-            <%= cl_image_tag home.photo, class: 'card-img-top rounded' %>
+        <% @upcoming_bookings.each do |booking| %>
+          <div class="card card-padding" style="max-width: 300px;min-width: 300px;">
+            <%= link_to home_path(booking.home) do  %>
+            <%= cl_image_tag booking.home.photo, class: 'card-img-top rounded', style: "width: 230px; height: 200px;" %>
             <% end %>
             <div class="card-body">
-              <p class="card-text"><%= home.name %></p>
+              <p class="card-text"><%= booking.home.name %></p>
             </div>
           </div>
         <% end %>
@@ -65,15 +78,15 @@
     <div>
       <h4 class="card-padding">Bookings</h4>
     </div>
-    <div class="overflow-auto">
+    <div class="overflow-auto" style="width: 700px;height: 300px;">
       <div class="card-deck listings">
-        <% @user.homes.each do |home| %>
-          <div class="card card-padding" style="width: 18rem;">
-            <%= link_to home_path(home) do  %>
-            <%= cl_image_tag home.photo, class: 'card-img-top rounded' %>
+        <% @bookings.each do |booking| %>
+          <div class="card card-padding" style="max-width: 300px;min-width: 300px;">
+            <%= link_to booking_path(booking.id) do  %>
+            <%= cl_image_tag booking.home.photo, class: 'card-img-top rounded', style: "width: 230px; height: 200px;"%>
             <% end %>
             <div class="card-body">
-              <p class="card-text"><%= home.name %></p>
+              <p class="card-text"><%= booking.home.name %></p>
             </div>
           </div>
         <% end %>
@@ -81,3 +94,30 @@
     </div>
   </div>
 </div>
+<h2>Reviews</h2>
+<ul class="list-group list-group-flush">
+  <% @user.homes.each do|home| %>
+    <% home.reviews.each do |review| %>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-start align-items-center">
+          <%= cl_image_tag(review.user.photo, class: "card-user avatar") %>
+          <%= review.user.first_name %>
+        </div>
+          <div>
+            <p>"<%= review.content %>"</p>
+          </div>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+  <li class="list-group-item">Porta ac consectetur ac</li>
+  <li class="list-group-item">Vestibulum at eros</li>
+</ul>
+
+
+
