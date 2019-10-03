@@ -1,8 +1,8 @@
 <!-- profile card -->
 <div>
-  <h1 class="border-bottom", style="text-align:center; padding:30px; margin-left:400px; margin-right:400px"><%= @user.first_name.capitalize %>'s Profile</h1>
+  <h1 class="border-bottom", style="text-align:center; padding:30px;padding-bottom: 10px;margin-left:400px; margin-right:400px"><%= @user.first_name.capitalize %>'s Profile</h1>
 <div class="container">
-  <div class="profile-container sticky-top" style="margin-top: -410px;
+  <div class="profile-container sticky-top" style="margin-top: -440px;
 ">
     <div class='profile-card card-padding'>
       <div class="profile-picture">
@@ -44,7 +44,7 @@
   </div>
   <div class="about-me-container">
     <div>
-      <h4 class="card-padding">Listings</h4>
+      <h4 class="headings border-bottom", style="margin-left: 200px;margin-right: 200px;margin-bottom: 15px;">Listings</h4>
     </div>
     <div class="listings overflow-auto" style="width: 700px;height: 300px;">
       <div class="list-group list-group-horizontal">
@@ -61,8 +61,8 @@
         <% end %>
       </div>
     </div>
-    <div class="mx-auto heading" style="width: 200px;">
-      <h3>Reviews</h3>
+    <div class="mx-auto heading">
+      <h4 class="headings border-bottom", style="margin-left: 200px;margin-right: 200px;margin-bottom: 15px;">Reviews</h4>
     </div>
     <div class="container" style="padding-bottom: 50px;">
       <div class="row">

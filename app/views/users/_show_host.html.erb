@@ -1,8 +1,8 @@
 <!-- profile card -->
 <div>
-  <h1 class="border-bottom", style="text-align:center; padding:30px; margin-left:400px; margin-right:400px">My Profile</h1>
+  <h1 class="border-bottom", style="text-align:center; padding:30px;padding-bottom: 10px;margin-left:400px; margin-right:400px">My Profile</h1>
 <div class="container">
-  <div class="profile-container sticky-top" style="margin-top: -1025px;">
+  <div class="profile-container sticky-top" style="margin-top: -1050px;">
     <div class='profile-card card-padding'>
       <div class="profile-picture">
         <%= cl_image_tag current_user.photo, class: 'avatar-large' %>
@@ -49,7 +49,7 @@
   </div>
   <div class="about-me-container">
     <div>
-      <h4 class="card-padding">Listings</h4>
+      <h4 class="headings border-bottom", style="margin-left: 200px;margin-right: 200px;margin-bottom: 15px;">Listings</h4>
     </div>
     <div class="listings overflow-auto" style="width: 700px;height: 300px;">
       <div class="list-group list-group-horizontal">
@@ -67,7 +67,7 @@
       </div>
     </div>
     <div>
-      <h4 class="card-padding">Upcoming Guests</h4>
+      <h4 class="headings border-bottom", style="margin-left: 200px;margin-right: 200px;margin-bottom: 15px;">Upcoming Guests</h4>
     </div>
     <div class="listings overflow-auto" style="width: 700px;height: 300px;">
       <div class="list-group list-group-horizontal">
@@ -97,24 +97,37 @@
       </div>
     </div>
     <div>
-      <h4 class="card-padding">Bookings</h4>
+      <h4 class="headings border-bottom", style="margin-left: 200px;margin-right: 200px;margin-bottom: 15px;">Bookings</h4>
     </div>
     <div class="listings overflow-auto" style="width: 700px;height: 300px;">
       <div class="list-group list-group-horizontal">
         <% @bookings.each do |booking| %>
-          <div class="card card-padding" style="max-width: 300px;min-width: 300px;margin: 5px;">
-            <%= link_to home_path(booking.home) do  %>
-            <%= cl_image_tag booking.home.photo, class: 'card-img-top rounded', style: "width: 230px; height: 200px;"%>
-            <% end %>
-            <div class="card-body">
-              <p class="card-text"><%= booking.home.name %></p>
+          <%= link_to home_path(booking.home) do  %>
+            <div class="card card-padding" style="max-width: 300px;min-width: 300px;margin: 5px;height: 280px;">
+              <%= cl_image_tag booking.home.photo, class: 'card-img-top rounded', style: "width: 250px; height: 150px;" %>
+              <div class="card-body">
+                <p class="card-text" style="color: black;">
+                  <%= booking.home.name %>
+                </p>
+                <small style="color: black;">
+                  <%= booking.check_in.to_date.to_s(:long) %> -
+                </small>
+                <small style="color: black;">
+                  <%= booking.check_out.to_date.to_s(:long) %>
+                </small>
+                <div>
+                  <%= link_to user_path(booking.user.id) do  %>
+                  <%= cl_image_tag(booking.user.photo, class: "card-user avatar")%>
+                  <% end %>
+                </div>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     </div>
-    <div class="mx-auto heading" style="width: 200px;">
-      <h3>Reviews</h3>
+    <div class="mx-auto heading">
+      <h4 class="headings border-bottom", style="margin-left: 200px;margin-right: 200px;margin-bottom: 15px;">Reviews</h4>
     </div>
     <div class="container" style="padding-bottom: 50px;">
       <div class="row">
