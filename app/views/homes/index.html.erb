@@ -2,21 +2,21 @@
   <div class="shadow p-4 mb-5 bg-white rounded overflow-auto" style="width: 620px; height: 530px;">
     <% @homes.each do |home| %>
       <%= link_to home_path(home) do %>
-      <div class="card mb-3 p-2 shadow-sm" style="max-width: 600px;">
-        <div class="row no-gutter linkable">
-          <div class="col-md-4">
-            <%= cl_image_tag home.photo, class: "card-img" %>
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <p class="card-text"><small class="text-muted"><%= home.home_type %></small></p>
-              <h5 class="card-title"><%= home.name %></h5>
-              <p class="card-text"><%= home.address %></p>
-              <p class="card-text"><small class="text-muted"><%= home.guest %> guests - <%= home.bedroom %> bedrooms - <%= home.bed %> beds - <%= home.bath %> baths - $<%= home.rate %> per night</small></p>
+        <div class="card mb-3 p-2 shadow-sm" style="max-width: 600px;">
+          <div class="row no-gutter linkable">
+            <div class="col-md-4">
+              <%= cl_image_tag home.photo, class: "card-img" %>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <p class="card-text"><small class="text-muted"><%= home.home_type %></small></p>
+                <h5 class="card-title"><%= home.name %></h5>
+                <p class="card-text"><%= home.address %></p>
+                <p class="card-text"><small class="text-muted"><%= home.guest %> guests - <%= home.bedroom %> bedrooms - <%= home.bed %> beds - <%= home.bath %> baths - $<%= home.rate %> per night</small></p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       <% end %>
     <% end %>
   </div>

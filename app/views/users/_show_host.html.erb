@@ -2,7 +2,7 @@
 <div>
   <h1 class="border-bottom", style="text-align:center; padding:30px; margin-left:400px; margin-right:400px">My Profile</h1>
 <div class="container">
-  <div class="profile-container sticky-top">
+  <div class="profile-container sticky-top" style="margin-top: -1025px;">
     <div class='profile-card card-padding'>
       <div class="profile-picture">
         <%= cl_image_tag current_user.photo, class: 'avatar-large' %>
@@ -22,7 +22,7 @@
              <% review_count += home.reviews.all.count %>
           <% end %>
           <%= review_count %>
-          reviews
+          Reviews
         </div>
         <div>
           <% total = 0 %>
@@ -32,7 +32,11 @@
               <% total += review.rating %>
             <% end %>
           <% end %>
-          <i class="fas fa-star"></i> <%= total/review_count.to_f %>
+          <% if total != 0 %>
+            <i class="fas fa-star"></i> <%= total/review_count.to_f %> Stars
+          <% else %>
+            <i class="fas fa-star"></i> <%= total %> Stars
+          <% end %>
         </div>
       </div>
       <div class="card-padding" style="padding-bottom: 0px;">
@@ -85,7 +89,7 @@
       <div class="list-group list-group-horizontal">
         <% @bookings.each do |booking| %>
           <div class="card card-padding" style="max-width: 300px;min-width: 300px;;margin: 5px;">
-            <%= link_to booking_path(booking.id) do  %>
+            <%= link_to home_path(booking.home) do  %>
             <%= cl_image_tag booking.home.photo, class: 'card-img-top rounded', style: "width: 230px; height: 200px;"%>
             <% end %>
             <div class="card-body">

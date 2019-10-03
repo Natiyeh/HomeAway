@@ -1,1 +1,106 @@
-<p>guest</p>
+<!-- profile card -->
+<div>
+  <h1 class="border-bottom", style="text-align:center; padding:30px; margin-left:400px; margin-right:400px"><%= @user.first_name.capitalize %>'s Profile</h1>
+<div class="container">
+  <div class="profile-container sticky-top" style="margin-top: -410px;
+">
+    <div class='profile-card card-padding'>
+      <div class="profile-picture">
+        <%= cl_image_tag @user.photo, class: 'avatar-large' %>
+      </div>
+      <div class='border-bottom card-padding'>
+        <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>
+      </div>
+      <div class='border-bottom card-padding'>
+        <div>Joined in <b><%= @user.created_at.to_s.match(/^\d+/) %></b>
+        </div>
+      </div>
+      <div class='border-bottom card-padding'>
+        <div>
+          <i class="fas fa-comment-alt"></i>
+          <% review_count = 0 %>
+          <% @user.homes.each do |home| %>
+             <% review_count += home.reviews.all.count %>
+          <% end %>
+          <%= review_count %>
+          Reviews
+        </div>
+        <div>
+          <% total = 0 %>
+          <% sum = 0 %>
+          <% @user.homes.each do|home| %>
+            <% home.reviews.each do |review| %>
+              <% total += review.rating %>
+            <% end %>
+          <% end %>
+          <% if total != 0 %>
+            <i class="fas fa-star"></i> <%= total/review_count.to_f %> stars
+          <% else %>
+            <i class="fas fa-star"></i> <%= total %> Stars
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about-me-container">
+    <div>
+      <h4 class="card-padding">Listings</h4>
+    </div>
+    <div class="listings overflow-auto" style="width: 700px;height: 300px;">
+      <div class="list-group list-group-horizontal">
+        <% @user.homes.each do |home| %>
+          <div class="card card-padding" style="max-width: 300px;min-width: 300px;margin: 5px;">
+            <%= link_to home_path(home) do  %>
+              <%= cl_image_tag home.photo, class: 'card-img-top rounded', style: "width: 230px; height: 200px;" %>
+            <% end %>
+            <div class="card-body">
+              <p class="card-text"><%= home.name %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="mx-auto heading" style="width: 200px;">
+      <h3>Reviews</h3>
+    </div>
+    <div class="container" style="padding-bottom: 50px;">
+      <div class="row">
+        <div class="col overflow-auto listings" style="height: 500px;width: 500px;">
+          <% @user.homes.each do|home| %>
+            <% home.reviews.each do |review| %>
+              <div class="list-group border-bottom" style="padding-top: 30px;padding-bottom: 10px;">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">
+                    <%= link_to user_path(review.user.id) do %>
+                      <%= cl_image_tag(review.user.photo, class: "card-user avatar") %>
+                    <% end %>
+                    <%= review.user.first_name.capitalize %>
+                  </h5>
+                  <small>
+                    <%= review.created_at.to_date.to_s(:long)  %>
+                  </small>
+                </div>
+                <p class="mb-1">
+                  "<%= review.content %>"
+                </p>
+                <small>
+                  <i class="fas fa-star"></i> <%= review.rating %>
+                </small>
+                <br>
+                <small>
+                  <div class="d-flex w-100 justify-content-around" style="padding-top:0px;">
+                    stayed at: <%= home.name %>
+                    <%= link_to home_path(home) do  %>
+                      <%= cl_image_tag home.photo, class: "square-avatar" %>
+                    <% end %>
+                  </div>
+                </small>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

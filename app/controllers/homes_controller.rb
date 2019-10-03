@@ -3,7 +3,6 @@ class HomesController < ApplicationController
 
   def index
     @homes = Home.all
-    @homes = Home.geocoded
 
     @markers = @homes.map do |home|
       {
