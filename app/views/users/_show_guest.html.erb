@@ -1,9 +1,7 @@
-<!-- profile card -->
 <div>
-  <h1 class="border-bottom", style="text-align:center; padding:30px;padding-bottom: 10px;margin-left:400px; margin-right:400px"><%= @user.first_name.capitalize %>'s Profile</h1>
+  <h1 class="border-bottom profile"><%= @user.first_name.capitalize %>'s Profile</h1>
 <div class="container">
-  <div class="profile-container sticky-top" style="margin-top: -440px;
-">
+  <div class="profile-container-guest sticky-top">
     <div class='profile-card card-padding'>
       <div class="profile-picture">
         <%= cl_image_tag @user.photo, class: 'avatar-large' %>
@@ -43,16 +41,16 @@
   </div>
   <div class="about-me-container">
     <div>
-      <h4 class="headings border-bottom", style="margin-left: 200px;margin-right: 200px;margin-bottom: 15px;">Listings</h4>
+      <h4 class="reviews border-bottom">Listings</h4>
     </div>
-    <div class="listings overflow-auto" style="width: 700px;height: 300px;">
+    <div class="three-listings overflow-auto">
       <div class="list-group list-group-horizontal">
         <% @user.homes.each do |home| %>
           <%= link_to home_path(home) do  %>
-            <div class="card card-padding" style="max-width: 300px;min-width: 300px;margin: 5px;height: 280px;">
-              <%= cl_image_tag home.photo, class: 'card-img-top rounded', style: "width: 250px; height: 150px;" %>
-              <div class="card-body" style="padding: 20px;">
-                <p class="card-text" style="color: black;"><%= home.name %></p>
+            <div class="card card-padding card-listing">
+              <%= cl_image_tag home.photo, class: 'card-img-top rounded card-picture' %>
+              <div class="card-body body">
+                <p class="card-text text"><%= home.name %></p>
                 <p style="color: black;"><%= home.address %></p>
               </div>
             </div>
@@ -61,14 +59,14 @@
       </div>
     </div>
     <div class="mx-auto heading">
-      <h4 class="headings border-bottom", style="margin-left: 200px;margin-right: 200px;margin-bottom: 15px;">Reviews</h4>
+      <h4 class="reviews border-bottom">Reviews</h4>
     </div>
-    <div class="container" style="padding-bottom: 50px;">
+    <div class="container review-container">
       <div class="row">
-        <div class="col overflow-auto listings" style="height: 500px;width: 500px;">
+        <div class="col overflow-auto listings">
           <% @user.homes.each do|home| %>
             <% home.reviews.each do |review| %>
-              <div class="list-group border-bottom" style="padding-top: 30px;padding-bottom: 10px;">
+              <div class="list-group border-bottom review-list">
                 <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1">
                     <%= link_to user_path(review.user.id) do %>
@@ -88,7 +86,7 @@
                 </small>
                 <br>
                 <small>
-                  <div class="d-flex w-100 justify-content-around" style="padding-top:0px;">
+                  <div class="d-flex w-100 justify-content-around home-name">
                     stayed at: <%= home.name %>
                     <%= link_to home_path(home) do  %>
                       <%= cl_image_tag home.photo, class: "square-avatar" %>
