@@ -27,7 +27,6 @@
         </div>
         <div>
           <% total = 0 %>
-          <% sum = 0 %>
           <% @user.homes.each do|home| %>
             <% home.reviews.each do |review| %>
               <% total += review.rating %>

@@ -28,12 +28,51 @@
       <br>
       <p class="border-bottom"><%= @home.description %></p>
       <br>
-      <h5>Reviews <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></h5>
-        <% @home.reviews.each do |review| %>
-          <p>"<%= review.content %>"</p>
-          <p><%= review.rating %> <i class="fas fa-star"></i></p>
-        <% end %>
-        <%= link_to 'leave a review', new_home_review_path(@home) %>
+      <div>
+        <div class="border-bottom">
+          <h3>Reviews</h3>
+          <% review_count = 0 %>
+          <% @home.reviews.each do |review| %>
+            <% review_count += 1 %>
+          <% end %>
+          <% total = 0 %>
+          <% @home.reviews.each do |review| %>
+            <% total += review.rating %>
+          <% end %>
+          <% if total != 0 %>
+            <i class="fas fa-star"></i> <%= total/review_count.to_f %>
+          <% else %>
+            <i class="fas fa-star"></i> <%= total %>
+          <% end %>
+          <small>
+          (<%= review_count %> reviews)
+          </small>
+        </div>
+        <div class="col overflow-auto listings" style="height: 500px;width: 500px;">
+          <% @home.reviews.each do|review| %>
+            <div class="list-group border-bottom" style="padding-top: 30px;padding-bottom: 10px;">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">
+                  <%= link_to user_path(review.user.id) do %>
+                    <%= cl_image_tag(review.user.photo, class: "card-user avatar") %>
+                  <% end %>
+                  <%= review.user.first_name.capitalize %>
+                </h5>
+                <small>
+                  <%= review.created_at.to_date.to_s(:long)  %>
+                </small>
+              </div>
+              <p class="mb-1">
+                "<%= review.content %>"
+              </p>
+              <small>
+                <i class="fas fa-star"></i> <%= review.rating %>
+              </small>
+              <br>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
     <div class="col">
       <div class="create-form m-3" style="width: 30vw;">
