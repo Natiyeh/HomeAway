@@ -18,18 +18,20 @@
       ></div>
     </div>
     <div class="col">
-      <%= link_to user_path(@home.user.id) do %>
-        <%= cl_image_tag(@home.user.photo, alt: "avatar", class: "card-user avatar") %> <%= @home.user.first_name.capitalize %>
-      <% end %>
-      <%= cl_image_tag @home.photo, class: "img-thumbnail", style: "width: 530px; height: 400px;" %>
+      <div class="details-show">
+        <%= link_to user_path(@home.user.id) do %>
+          <%= cl_image_tag(@home.user.photo, alt: "avatar", class: "card-user avatar") %> <%= @home.user.first_name.capitalize %>
+        <% end %>
+      </div>
+      <%= cl_image_tag @home.photo, class: "img-thumbnail show-image" %>
     </div>
     <div class="w-100"></div>
     <div class="col">
       <br>
-      <p class="border-bottom"><%= @home.description %></p>
+      <p class="border-bottom details-show"><%= @home.description %></p>
       <br>
       <div>
-        <div class="border-bottom">
+        <div class="details-show">
           <h3>Reviews</h3>
           <% review_count = 0 %>
           <% @home.reviews.each do |review| %>
@@ -48,9 +50,9 @@
           (<%= review_count %> reviews)
           </small>
         </div>
-        <div class="col overflow-auto listings" style="height: 500px;width: 500px;">
+        <div class="col overflow-auto listings">
           <% @home.reviews.each do|review| %>
-            <div class="list-group border-bottom" style="padding-top: 30px;padding-bottom: 10px;">
+            <div class="list-group border-bottom review-list">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">
                   <%= link_to user_path(review.user.id) do %>
@@ -75,7 +77,7 @@
       </div>
     </div>
     <div class="col">
-      <div class="create-form m-3" style="width: 30vw;">
+      <div class="create-form m-3">
         <p>$<%= @home.rate %> per night</p>
         <%= link_to 'edit listing', edit_home_path(@home)  %>
       </div>

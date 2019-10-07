@@ -2,8 +2,7 @@ class HomesController < ApplicationController
   before_action :set_home, only: %i[show edit update destroy]
 
   def index
-    @homes = Home.all
-
+    @homes = Home.all.where.not(user_id: current_user)
     @markers = @homes.map do |home|
       {
         lat: home.latitude,

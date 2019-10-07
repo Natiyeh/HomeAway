@@ -1,8 +1,8 @@
 <div class="d-flex justify-content-around">
-  <div class="shadow p-4 mb-5 bg-white rounded overflow-auto" style="width: 620px; height: 530px;">
+  <div class="shadow p-4 mb-5 bg-white rounded overflow-auto main-list">
     <% @homes.each do |home| %>
       <%= link_to home_path(home) do %>
-        <div class="card mb-3 p-2 shadow-sm" style="max-width: 600px;">
+        <div class="index-card card mb-3 p-2 shadow-sm">
           <div class="row no-gutter linkable">
             <div class="col-md-4">
               <%= cl_image_tag home.photo, class: "card-img" %>
@@ -22,10 +22,8 @@
   </div>
   <div class="shadow p-3 mb-5 bg-white rounded">
     <div
-      class="rounded"
+      class="rounded index-map"
       id="map"
-      style="width: 620px;
-      height: 500px;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
