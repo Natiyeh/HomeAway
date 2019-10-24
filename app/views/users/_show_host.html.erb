@@ -7,7 +7,7 @@
         <%= cl_image_tag current_user.photo, class: 'avatar-large' %>
       </div>
       <div class='border-bottom card-padding'>
-        <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>
+        <%= @user.first_name %> <%= @user.last_name %>
       </div>
       <div class='border-bottom card-padding'>
         <div>Joined in <b><%= @user.created_at.to_s.match(/^\d+/) %></b>
