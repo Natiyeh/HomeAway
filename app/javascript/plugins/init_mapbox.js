@@ -1,4 +1,5 @@
 import mapboxgl from 'mapbox-gl';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 const mapElement = document.getElementById('map');
 
@@ -14,6 +15,8 @@ const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
     new mapboxgl.Marker()
       .setLngLat([ marker.lng, marker.lat ])
+      .setPopup(new mapboxgl.Popup({ offset: 25 })
+      .setHTML(marker.infoWindow.content))
       .addTo(map);
   });
 };
@@ -25,18 +28,15 @@ const fitMapToMarkers = (map, markers) => {
 };
 
 const initMapbox = () => {
-  if (document.querySelector('.index-map')) {
+  if (mapElement) {
     const map = buildMap();
     const markers = JSON.parse(mapElement.dataset.markers);
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
-  } else {
-    const map = buildMap();
-    const markers = JSON.parse(mapElement.dataset.markers);
-    addMarkersToMap(map, markers);
-    fitMapToMarkers(map, markers);
+    map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken }));
   }
 };
+
 
 
 export { initMapbox };
