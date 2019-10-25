@@ -4,6 +4,7 @@ ruby '2.5.3'
 gem 'carrierwave', '~> 1.2'
 gem 'cloudinary', '~> 1.9.1'
 gem 'geocoder'
+gem 'geokit'
 
 gem 'bootsnap', require: false
 gem 'devise'
@@ -20,6 +21,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'rails_12factor'
+gem 'faker', '~> 2.6'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
