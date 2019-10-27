@@ -1,6 +1,9 @@
 .profile-container-host {
   margin-right: 200px;
   margin-top: -1050px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 8rem;
 }
 
 .card-listing {
@@ -29,7 +32,7 @@
 }
 
 .profile-card {
-  border: 1px solid;
+  border: 1px solid #9C9E9B;
   border-radius: 5px;
   background-color: white;
   width: 300px;
@@ -38,14 +41,14 @@
 }
 
 .listings {
-  border: 1px solid #dee2e6;
+  border: 1px solid #9C9E9B;
   border-radius: 5px;
   height: 500px;
   width: 500px;
 }
 
 .three-listings {
-  border: 1px solid;
+  border: 1px solid #9C9E9B;
   border-radius: 5px;
   width: 700px;
   height: 300px;
