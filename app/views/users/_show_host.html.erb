@@ -1,8 +1,8 @@
 <div>
-  <h1 class="border-bottom profile">My Profile</h1>
+  <h1 class="profile">My Profile</h1>
 <div class="container">
   <div class="profile-container-host">
-    <div class='profile-card card-padding'>
+    <div class='profile-card card-padding shadow'>
       <div class="profile-picture">
         <%= cl_image_tag current_user.photo, class: 'avatar-large' %>
       </div>
@@ -48,13 +48,13 @@
   </div>
   <div class="about-me-container">
     <div>
-      <h4 class="reviews border-bottom">Listings</h4>
+      <h4 class="reviews">Listings</h4>
     </div>
-    <div class="three-listings overflow-auto">
+    <div class="three-listings overflow-auto shadow">
       <div class="list-group list-group-horizontal">
         <% @user.homes.each do |home| %>
-          <%= link_to home_path(home) do  %>
-            <div class="card card-padding card-listing">
+          <%= link_to home_path(home), class: 'text-decoration-none' do %>
+            <div class="card card-padding card-listing shadow-sm">
               <%= cl_image_tag home.photo, class: 'card-img-top rounded card-picture' %>
               <div class="card-body body">
                 <p class="card-text text"><%= home.name %></p>
@@ -66,13 +66,13 @@
       </div>
     </div>
     <div>
-      <h4 class="reviews border-bottom">Upcoming Guests</h4>
+      <h4 class="reviews">Upcoming Guests</h4>
     </div>
-    <div class="three-listings overflow-auto">
+    <div class="three-listings overflow-auto shadow">
       <div class="list-group list-group-horizontal">
         <% @upcoming_bookings.each do |booking| %>
-          <%= link_to home_path(booking.home) do  %>
-            <div class="card card-padding card-listing">
+          <%= link_to home_path(booking.home), class: 'text-decoration-none' do  %>
+            <div class="card card-padding card-listing shadow-sm">
               <%= cl_image_tag booking.home.photo, class: 'card-img-top rounded card-picture' %>
               <div class="card-body">
                 <p class="card-text text">
@@ -96,13 +96,13 @@
       </div>
     </div>
     <div>
-      <h4 class="reviews border-bottom">Bookings</h4>
+      <h4 class="reviews">Bookings</h4>
     </div>
-    <div class="three-listings overflow-auto">
+    <div class="three-listings overflow-auto shadow">
       <div class="list-group list-group-horizontal">
         <% @bookings.each do |booking| %>
-          <%= link_to home_path(booking.home) do  %>
-            <div class="card card-padding card-listing">
+          <%= link_to home_path(booking.home), class: 'text-decoration-none' do  %>
+            <div class="card card-padding card-listing shadow-sm">
               <%= cl_image_tag booking.home.photo, class: 'card-img-top rounded card-picture' %>
               <div class="card-body">
                 <p class="card-text text">
@@ -125,21 +125,23 @@
         <% end %>
       </div>
     </div>
-    <div class="mx-auto heading">
-      <h4 class="reviews border-bottom">Reviews</h4>
+    <div>
+      <h4 class="reviews">Reviews</h4>
     </div>
     <div class="container review-container">
-      <div class="row">
+      <div class="row shadow">
         <div class="col overflow-auto listings">
           <% @user.homes.each do|home| %>
             <% home.reviews.each do |review| %>
               <div class="list-group border-bottom review-list">
                 <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1">
-                    <%= link_to user_path(review.user.id) do %>
-                      <%= cl_image_tag(review.user.photo, class: "card-user avatar") %>
+                    <%= link_to user_path(review.user.id), class: 'text-decoration-none' do %>
+                      <div class="text">
+                        <%= cl_image_tag(review.user.photo, class: "card-user avatar") %>
+                        <%= review.user.first_name.capitalize %>
+                      </div>
                     <% end %>
-                    <%= review.user.first_name.capitalize %>
                   </h5>
                   <small>
                     <%= review.created_at.to_date.to_s(:long)  %>

@@ -32,7 +32,7 @@
 }
 
 .profile-card {
-  border: 1px solid #9C9E9B;
+  // border: 1px solid #E4E4E4;
   border-radius: 5px;
   background-color: white;
   width: 300px;
@@ -41,14 +41,14 @@
 }
 
 .listings {
-  border: 1px solid #9C9E9B;
+  // border: 1px solid #E4E4E4;
   border-radius: 5px;
   height: 500px;
   width: 500px;
 }
 
 .three-listings {
-  border: 1px solid #9C9E9B;
+  // border: 1px solid #E4E4E4;
   border-radius: 5px;
   width: 700px;
   height: 300px;
@@ -84,6 +84,7 @@
   margin-left: 200px;
   margin-right: 200px;
   margin-bottom: 15px;
+  border-bottom: 1px solid #E4E4E4;
 }
 
 .profile {
@@ -92,6 +93,7 @@
   padding-bottom: 10px;
   margin-left:400px;
   margin-right:400px;
+  border-bottom: 1px solid #E4E4E4;
 }
 
 .review-container {

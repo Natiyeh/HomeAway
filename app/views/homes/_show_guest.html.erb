@@ -19,8 +19,10 @@
     </div>
     <div class="col">
       <div class="details-show">
-        <%= link_to user_path(@home.user.id) do %>
-          <%= cl_image_tag(@home.user.photo, alt: "avatar", class: "card-user avatar") %> <%= @home.user.first_name.capitalize %>
+        <%= link_to user_path(@home.user.id), class: 'text-decoration-none' do %>
+          <div class="text">
+            <%= cl_image_tag(@home.user.photo, alt: "avatar", class: "card-user avatar") %> <%= @home.user.first_name.capitalize %>
+          </div>
         <% end %>
       </div>
       <%= cl_image_tag @home.photo, class: "img-thumbnail show-image" %>
@@ -33,6 +35,7 @@
       <div>
         <div class="details-show">
           <h3>Reviews</h3>
+          <%= link_to 'leave a review', new_home_review_path(@home.id) %>
           <% review_count = 0 %>
           <% @home.reviews.each do |review| %>
             <% review_count += 1 %>
@@ -55,10 +58,12 @@
             <div class="list-group border-bottom review-list">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">
-                  <%= link_to user_path(review.user.id) do %>
-                    <%= cl_image_tag(review.user.photo, class: "card-user avatar") %>
+                  <%= link_to user_path(review.user.id), class: 'text-decoration-none' do %>
+                    <div class="text">
+                      <%= cl_image_tag(review.user.photo, class: "card-user avatar") %>
+                      <%= review.user.first_name.capitalize %>
+                    </div>
                   <% end %>
-                  <%= review.user.first_name.capitalize %>
                 </h5>
                 <small>
                   <%= review.created_at.to_date.to_s(:long)  %>
