@@ -1,2 +1,8 @@
-<h1><%= home.name %></h1>
-<p><%= home.address %></p>
+<div class="card" style="width: 10rem;">
+  <%= cl_image_tag home.photo, class: 'card-img' %>
+  <div class="card-body">
+    <h5 class="card-title"><%= home.name %></h5>
+    <p class="card-text"><%= home.address %></p>
+    <%= link_to 'check it out', home_path(home) %>
+  </div>
+</div>
