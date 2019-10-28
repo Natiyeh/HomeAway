@@ -1,6 +1,49 @@
-<div class="card bg-dark text-black">
-  <img src="https://images.pexels.com/photos/753626/pexels-photo-753626.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="card-img" alt="...">
-  <div class="card-img-overlay text-center">
-    <%= link_to "Find A Home", homes_path, type: "button", class: "btn btn-dark btn-lg rounded-pill" %>
+<div class='home d-flex flex-column justify-content-around align-items-center'>
+  <div class="first-section">
+    <h1 class='text-center text-white title'>
+      Home Away
+    </h1>
+    <h3 class='text-center text-white mt-3 description'>Search for homes all over the world!</h3>
+    <div class="text-white rounded d-flex justify-content-center">
+      <%= link_to "find a home", homes_path, class: 'btn btn-primary mt-3 toilet-button' %>
+    </div>
   </div>
 </div>
+  <div class='container'>
+    <div class="cards row d-flex justify-content-around center-items">
+      <div class="card shadow p-3 bg-white rounded" style="width: 18rem;">
+          <%= image_tag ("sign.jpg"), class:'card-img-top' %>
+        <div class="card-body">
+          <h4>Sign up.</h4>
+          <p class="card-text">Quickly sign up to Home Away with our seemless sign-up and be connected to millions of homes instantly.</p>
+        </div>
+      </div>
+      <div class="card shadow p-3 bg-white rounded" style="width: 18rem;">
+        <%= image_tag ("beach-house.jpg"), class:'card-img-top' %>
+        <div class="card-body">
+          <h4>Find a home.</h4>
+          <p class="card-text">Find homes in your area with a simple click of a button and begin your journey with Home Away.</p>
+        </div>
+      </div>
+      <div class="card shadow p-3 bg-white rounded" style="width: 18rem;">
+        <%= image_tag ("enjoy.jpg"), class:'card-img-top' %>
+        <div class="card-body">
+          <h4>Enjoy with friends.</h4>
+          <p class="card-text">Open your favorite app and enjoy traveling to some of the best homes in the world.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='container bottom-card'>
+    <div class="card shadow p-3 mb-3" style="max-width: 100rem;">
+      <div class="card-header text-center">About Us</div>
+        <div class="card-body text-dark">
+          <p class="card-text text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+  </div>
+
+
+
+

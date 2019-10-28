@@ -1,6 +1,6 @@
 <div>
   <h1 class="profile"><%= @user.first_name.capitalize %>'s Profile</h1>
-<div class="container">
+<div class="container d-flex">
   <div class="profile-container-guest">
     <div class='profile-card card-padding shadow'>
       <div class="profile-picture">
@@ -61,7 +61,7 @@
     <div>
       <h4 class="reviews">Reviews</h4>
     </div>
-    <div class="container review-container">
+    <div class="container d-flex review-container">
       <div class="row shadow">
         <div class="col overflow-auto listings">
           <% @user.homes.each do|home| %>
