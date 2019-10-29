@@ -5,7 +5,11 @@
     </h1>
     <h3 class='text-center text-white mt-3 description'>Search for homes all over the world!</h3>
     <div class="text-white rounded d-flex justify-content-center">
-      <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary mt-3 toilet-button' %>
+      <% if current_user.nil? %>
+        <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary mt-3 toilet-button' %>
+      <% else %>
+        <%= link_to "search", homes_path, class: 'btn btn-primary mt-3 toilet-button' %>
+      <% end %>
     </div>
   </div>
 </div>
