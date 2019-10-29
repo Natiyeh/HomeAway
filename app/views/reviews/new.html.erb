@@ -1,5 +1,11 @@
-<%= simple_form_for [@home, @review] do |f| %>
-  <%= f.input :content %>
-  <%= f.input :rating %>
-  <%= f.submit "add a review", class: "btn btn-primary" %>
-<% end %>
+<div class="container devise-form">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-4">
+      <%= simple_form_for [@home, @review] do |f| %>
+        <%= f.input :content %>
+        <%= f.input :rating %>
+        <%= f.submit "add a review", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
