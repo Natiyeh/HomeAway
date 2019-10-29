@@ -83,7 +83,8 @@
     <div class="col">
       <div class="create-form m-3">
         <p>$<%= @home.rate %> per night</p>
-        <%= link_to 'edit listing', edit_home_path(@home)  %>
+        <%= link_to 'Edit Listing', edit_home_path(@home), class:'btn btn-warning m-1' %>
+        <%= link_to 'Delete', home_path(params[:id]), method: :delete, class:'btn btn-danger m-1' %>
       </div>
     </div>
   </div>

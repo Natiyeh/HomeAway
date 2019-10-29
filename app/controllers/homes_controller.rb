@@ -50,7 +50,7 @@ class HomesController < ApplicationController
   def destroy
     @home.destroy
 
-    redirect_to homes_path
+    redirect_to user_path(@home.user_id)
   end
 
   private
