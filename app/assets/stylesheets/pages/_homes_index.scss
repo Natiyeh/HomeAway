@@ -7,6 +7,12 @@
   max-width: 600px;
 }
 
+.index-card:hover {
+  background-color: #F5F5F5;
+  text-decoration: none !important;
+  color: black;
+}
+
 #map {
   width: 620px;
   height: 500px;
