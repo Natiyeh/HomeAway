@@ -1,8 +1,8 @@
 <div class="card" style="width: 10rem;">
   <%= cl_image_tag home.photo, class: 'card-img' %>
   <div class="card-body">
-    <h5 class="card-title"><%= home.name %></h5>
-    <p class="card-text"><%= home.address %></p>
+    <h6 class="card-title"><%= home.name %></h6>
+    <small class="card-text"><%= home.address %></small>
     <%= link_to 'check it out', home_path(home) %>
   </div>
 </div>
