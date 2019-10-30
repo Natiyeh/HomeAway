@@ -3,7 +3,6 @@ class HomesController < ApplicationController
 
   def index
     @homes = Home.all.where.not(user_id: current_user)
-    @homes = Home.where.not(latitude: nil, longitude: nil)
     @markers = @homes.map do |home|
       {
         lat: home.latitude,
