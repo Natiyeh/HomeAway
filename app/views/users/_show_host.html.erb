@@ -24,15 +24,17 @@
           Reviews
         </div>
         <div>
-          <% total = 0 %>
-          <% sum = 0 %>
+          <% total = 0.0 %>
           <% @user.homes.each do|home| %>
             <% home.reviews.each do |review| %>
               <% total += review.rating %>
             <% end %>
           <% end %>
           <% if total != 0 %>
-            <i class="fas fa-star"></i> <%= total/review_count.to_f %> Stars
+            <i class="fas fa-star"></i>
+              <% final = total/review_count.round %>
+              <%= final.round(2) %>
+                stars
           <% else %>
             <i class="fas fa-star"></i> <%= total %> Stars
           <% end %>

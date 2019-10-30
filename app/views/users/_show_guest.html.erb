@@ -31,7 +31,10 @@
             <% end %>
           <% end %>
           <% if total != 0 %>
-            <i class="fas fa-star"></i> <%= total/review_count.to_i %> stars
+            <i class="fas fa-star"></i>
+              <% final = total/review_count.round %>
+              <%= final.round(2) %>
+                stars
           <% else %>
             <i class="fas fa-star"></i> <%= total %> Stars
           <% end %>
