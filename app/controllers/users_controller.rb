@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update show]
+  skip_before_action :authenticate_user!, only: [:show]
 
   def edit
   end
@@ -10,11 +11,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @upcoming_bookings = Booking.select do |booking|
-      booking.home.user_id == current_user.id
-    end
-    @bookings = Booking.select do |booking|
-      booking.user_id == current_user.id
+    if current_user
+      @upcoming_bookings = Booking.select do |booking|
+        booking.home.user_id == current_user.id
+      end
+      @bookings = Booking.select do |booking|
+        booking.user_id == current_user.id
+      end
     end
   end
 
