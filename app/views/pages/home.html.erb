@@ -11,6 +11,11 @@
         <%= link_to "search", homes_path, class: 'btn btn-primary mt-3 toilet-button' %>
       <% end %>
     </div>
+    <div class="text-white rounded d-flex justify-content-center">
+      <% if current_user.nil? %>
+        <%= link_to "Demo", homes_path, class: 'btn btn-primary mt-3 toilet-button' %>
+      <% end %>
+    </div>
   </div>
 </div>
   <div class='container'>

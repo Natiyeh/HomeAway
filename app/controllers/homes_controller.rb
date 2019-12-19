@@ -1,5 +1,6 @@
 class HomesController < ApplicationController
   before_action :set_home, only: %i[show edit update destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @homes = Home.all.where.not(user_id: current_user)
