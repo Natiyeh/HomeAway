@@ -18,6 +18,7 @@ class UsersController < ApplicationController
       @bookings = Booking.select do |booking|
         booking.user_id == current_user.id
       end
+    end
   end
 
   private
